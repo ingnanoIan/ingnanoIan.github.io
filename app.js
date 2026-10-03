@@ -107,8 +107,6 @@
 
       $("projects").appendChild(el("article", { class: "card" + (p.featured ? " card--featured" : "") }, [mediaBox, body]));
     });
-  } else {
-    $("cta-projects").hidden = true;
   }
 
   /* ----- Método de trabajo ----- */
@@ -138,8 +136,9 @@
     $(wrapId).hidden = false;
     items.forEach((it) =>
       $(listId).appendChild(el("li", {}, [
-        el("span", { class: "period", text: it.period }),
-        el("div", { class: "title" }, [document.createTextNode(it[titleKey] + " "), el("span", { text: "· " + it[subKey] })]),
+        it.period ? el("span", { class: "period", text: it.period }) : null,
+        el("div", { class: "title" }, [document.createTextNode(it[titleKey] + (it[subKey] ? " " : "")), it[subKey] ? el("span", { text: "· " + it[subKey] }) : null]),
+        has(it.points) ? el("ul", { class: "points" }, it.points.map((t) => el("li", { text: t }))) : null,
         it.text ? el("p", { class: "text", text: it.text }) : null
       ]))
     );
@@ -149,11 +148,22 @@
   timeline("certs", "certs-wrap", SITE.certifications, "title", "place");
 
   /* ----- Contacto ----- */
-  $("mail").href = "mailto:" + SITE.email;
-  $("mail").textContent = SITE.email;
+  if (SITE.email) {
+    $("mail").href = "mailto:" + SITE.email;
+    $("mail").textContent = SITE.email;
+    $("mail").hidden = false;
+  }
   (SITE.links || []).forEach((l) =>
     $("links").appendChild(el("li", {}, [el("a", { href: l.url, target: "_blank", rel: "noopener", text: l.label })]))
   );
+
+  /* ----- Botón principal del hero y menú: ocultar lo que no tiene contenido ----- */
+  if (has(SITE.projects)) { $("cta-primary").textContent = "Ver proyectos"; $("cta-primary").href = "#proyectos"; }
+  else if (!has(SITE.experience)) $("cta-primary").hidden = true;
+  document.querySelectorAll(".nav a[data-section]").forEach((a) => {
+    const target = document.querySelector(a.getAttribute("href"));
+    if (target && target.hidden) a.hidden = true;
+  });
 
   /* ----- Aparición suave al hacer scroll ----- */
   const targets = document.querySelectorAll(".block, .card, .service, .step");

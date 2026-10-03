@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tu Nombre — Analista de Datos · Data Science</title>
+  <title>Ian Sanchez Fernandez — Analista de Datos · Data Science</title>
 
   <!-- Estos textos son los que aparecen al compartir el link en WhatsApp, LinkedIn, etc. -->
-  <meta name="description" content="Portafolio de Tu Nombre, analista de datos: proyectos, herramientas y contacto.">
+  <meta name="description" content="Ian Sanchez Fernandez, analista de datos: experiencia, herramientas y contacto.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Tu Nombre — Analista de Datos · Data Science">
-  <meta property="og:description" content="Portafolio de Tu Nombre, analista de datos: proyectos, herramientas y contacto.">
+  <meta property="og:title" content="Ian Sanchez Fernandez — Analista de Datos · Data Science">
+  <meta property="og:description" content="Ian Sanchez Fernandez, analista de datos: experiencia, herramientas y contacto.">
   <meta property="og:image" content="assets/preview.png">
   <meta name="theme-color" content="#0b0b0c" media="(prefers-color-scheme: dark)">
   <meta name="theme-color" content="#fafaf9" media="(prefers-color-scheme: light)">
@@ -33,9 +33,9 @@
       <a class="brand" href="#inicio" id="brand"></a>
       <nav class="nav" aria-label="Principal">
         <a href="#sobre-mi">Sobre mí</a>
+        <a href="#trayectoria" data-section="path">Trayectoria</a>
         <a href="#proyectos" data-section="projects">Proyectos</a>
         <a href="#proceso" data-section="process">Método</a>
-        <a href="#trayectoria" data-section="path">Trayectoria</a>
         <a href="#contacto" class="nav__cta">Contacto</a>
       </nav>
       <button class="theme" id="theme" type="button" aria-label="Cambiar entre modo claro y oscuro">
@@ -53,7 +53,7 @@
         <p class="role" id="hero-role"></p>
         <p class="lead" id="hero-tagline"></p>
         <div class="actions">
-          <a class="btn btn--primary" id="cta-projects" href="#proyectos">Ver proyectos</a>
+          <a class="btn btn--primary" id="cta-primary" href="#trayectoria">Ver trayectoria</a>
           <a class="btn" id="cta-contact" href="#contacto">Contáctame</a>
           <a class="btn btn--ghost" id="cta-cv" href="#" download hidden>Descargar CV ↓</a>
         </div>
@@ -75,6 +75,24 @@
       </div>
     </section>
 
+    <section class="wrap block" id="trayectoria" hidden>
+      <h2>Trayectoria</h2>
+      <div class="cols">
+        <div id="experience-wrap" class="cols__full" hidden>
+          <h3>Experiencia</h3>
+          <ol class="timeline" id="experience"></ol>
+        </div>
+        <div id="education-wrap" hidden>
+          <h3>Educación</h3>
+          <ol class="timeline" id="education"></ol>
+        </div>
+        <div id="certs-wrap" hidden>
+          <h3>Certificaciones</h3>
+          <ol class="timeline" id="certs"></ol>
+        </div>
+      </div>
+    </section>
+
     <section class="wrap block" id="proyectos" hidden>
       <h2>Proyectos</h2>
       <div class="grid" id="projects"></div>
@@ -90,28 +108,10 @@
       <div class="services" id="services"></div>
     </section>
 
-    <section class="wrap block" id="trayectoria" hidden>
-      <h2>Trayectoria</h2>
-      <div class="cols">
-        <div id="experience-wrap" hidden>
-          <h3>Experiencia</h3>
-          <ol class="timeline" id="experience"></ol>
-        </div>
-        <div id="education-wrap" hidden>
-          <h3>Educación</h3>
-          <ol class="timeline" id="education"></ol>
-        </div>
-        <div id="certs-wrap" hidden>
-          <h3>Certificaciones</h3>
-          <ol class="timeline" id="certs"></ol>
-        </div>
-      </div>
-    </section>
-
     <section class="wrap block contact" id="contacto">
       <h2>Hablemos de tus datos</h2>
       <p class="lead">¿Tienes datos y una pregunta sin responder? Escríbeme y vemos cómo ayudarte.</p>
-      <a class="mail" id="mail" href="#"></a>
+      <a class="mail" id="mail" href="#" hidden></a>
       <ul class="links" id="links"></ul>
     </section>
   </main>

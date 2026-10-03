@@ -201,8 +201,10 @@ ul, ol { list-style: none; margin: 0; padding: 0; }
 /* ---------- Trayectoria ---------- */
 .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 56px; }
 .timeline { display: grid; gap: 28px; border-left: 1px solid var(--line); margin-left: 4px; }
-.timeline li { position: relative; padding-left: 26px; display: grid; gap: 2px; }
-.timeline li::before {
+.cols__full { grid-column: 1 / -1; }
+.timeline > li { position: relative; padding-left: 26px; display: grid; gap: 2px; max-width: 86ch; }
+.points { margin: 8px 0 0; padding-left: 18px; list-style: disc; display: grid; gap: 8px; color: var(--muted); font-size: 15px; }
+.timeline > li::before {
   content: ""; position: absolute; left: -5px; top: 7px; width: 9px; height: 9px;
   border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px var(--bg);
 }
