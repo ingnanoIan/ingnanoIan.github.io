@@ -13,6 +13,7 @@ const SITE = {
   tagline: "Creo sitios y aplicaciones rápidas, claras y fáciles de usar.",
   bio: "Soy freelance con X años de experiencia ayudando a negocios y personas a poner sus ideas en internet. Trabajo de forma directa, con comunicación clara y entregas a tiempo.",
   location: "Ciudad, País",
+  photo: "",                                     // tu foto (ej. "assets/foto.jpg", cuadrada); vacío = se muestran tus iniciales
   available: true,                               // true muestra el punto verde "Disponible para proyectos"
 
   // ---- Contacto ----

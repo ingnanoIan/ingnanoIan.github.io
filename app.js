@@ -33,6 +33,15 @@
   if (SITE.cv) { $("cta-cv").href = SITE.cv; $("cta-cv").hidden = false; }
   $("foot").textContent = "© " + new Date().getFullYear() + " " + SITE.name + (SITE.location ? " · " + SITE.location : "");
 
+  /* Foto (opcional) o iniciales del nombre */
+  const media = $("hero-media");
+  if (SITE.photo) media.appendChild(el("img", { src: SITE.photo, alt: "" }));
+  else media.appendChild(el("span", {
+    class: "hero__initials",
+    text: SITE.name.split(/\s+/).slice(0, 2).map((w) => w.charAt(0).toUpperCase()).join("")
+  }));
+  if (!SITE.projects || !SITE.projects.length) $("cta-projects").hidden = true;
+
   const skills = $("skills");
   if (SITE.skills && SITE.skills.length) SITE.skills.forEach((s) => skills.appendChild(el("li", { text: s })));
   else skills.hidden = true;
@@ -70,6 +79,7 @@
   /* ----- Experiencia y educación ----- */
   if (SITE.experience && SITE.experience.length) {
     $("experiencia").hidden = false;
+    $("experience-wrap").hidden = false;
     SITE.experience.forEach((e) =>
       $("experience").appendChild(
         el("li", {}, [
