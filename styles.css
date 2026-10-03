@@ -129,7 +129,7 @@ ul, ol { list-style: none; margin: 0; padding: 0; }
   text-decoration: none; color: inherit;
   transition: transform .2s, border-color .2s, box-shadow .2s;
 }
-a.card:hover { transform: translateY(-4px); border-color: var(--muted); box-shadow: 0 16px 40px -18px rgba(0,0,0,.3); }
+.card:hover { transform: translateY(-3px); border-color: var(--muted); box-shadow: 0 16px 40px -18px rgba(0,0,0,.3); }
 .card__media {
   aspect-ratio: 16 / 10; display: grid; place-items: center; overflow: hidden;
   background:
@@ -146,10 +146,60 @@ a.card:hover { transform: translateY(-4px); border-color: var(--muted); box-shad
 .card p { margin-top: 10px; color: var(--muted); font-size: 15px; }
 .card .chips { margin-top: 18px; }
 .card .chips li { font-size: 12px; padding: 2px 10px; background: transparent; }
-.card__link { margin-top: auto; padding-top: 18px; font-size: 14px; font-weight: 550; color: var(--accent); }
+.card__year { display: block; margin-top: 2px; }
+.card__summary { color: var(--text) !important; }
+.card__links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 20px; }
+.pill {
+  font-size: 13px; font-weight: 550; text-decoration: none; color: var(--text);
+  border: 1px solid var(--line); border-radius: 999px; padding: 4px 14px;
+  transition: border-color .15s, color .15s;
+}
+.pill:hover { border-color: var(--accent); color: var(--accent); }
+
+/* Problema / Enfoque / Resultado */
+.rows { margin: 18px 0 0; display: grid; gap: 12px; }
+.row { display: grid; grid-template-columns: 82px 1fr; gap: 12px; font-size: 14.5px; }
+.row dt { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); font-weight: 600; padding-top: 3px; }
+.row dd { margin: 0; color: var(--muted); }
+
+/* Estado del proyecto */
+.badge { flex: none; font-size: 11px; font-weight: 600; padding: 2px 10px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+.badge--done { color: #16a34a; border-color: color-mix(in srgb, #16a34a 40%, transparent); }
+.badge--wip  { color: #d97706; border-color: color-mix(in srgb, #d97706 40%, transparent); }
+:root[data-theme="dark"] .badge--done { color: #4ade80; }
+:root[data-theme="dark"] .badge--wip  { color: #fbbf24; }
+
+/* Ilustración automática (mini gráfico) */
+.sketch { width: 70%; height: auto; max-height: 82%; }
+.sketch__bar { fill: var(--accent); opacity: .5; }
+.sketch__bar:nth-child(odd) { opacity: .28; }
+.sketch__line { fill: none; stroke: var(--text); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; opacity: .55; }
+
+/* Proyecto destacado: ancho completo, imagen a un lado */
+@media (min-width: 861px) {
+  .card--featured { grid-column: 1 / -1; flex-direction: row; }
+  .card--featured .card__media { flex: 0 0 44%; aspect-ratio: auto; min-height: 280px; border-bottom: 0; border-right: 1px solid var(--line); }
+  .card--featured .card__body { padding: 30px 34px; }
+  .card--featured h3 { font-size: 1.6rem; }
+}
+
+/* ---------- Herramientas, "Ahora" y método ---------- */
+.skillgroup { display: grid; grid-template-columns: 110px 1fr; gap: 12px; align-items: baseline; padding: 12px 0; border-top: 1px solid var(--line); }
+.skillgroup:first-child { border-top: 0; padding-top: 0; }
+.skillgroup__name { font-size: 13px; color: var(--muted); }
+.now { display: flex; gap: 12px; align-items: baseline; margin-top: 28px; padding: 14px 18px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); font-size: 15px; color: var(--muted); }
+.now__label { flex: none; font-size: 11px; text-transform: uppercase; letter-spacing: .1em; font-weight: 700; color: var(--accent); }
+
+.steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+@media (max-width: 899px) { .steps { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 600px) { .steps { grid-template-columns: 1fr; } }
+.step { padding: 22px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.step__n { font-size: 13px; font-weight: 700; color: var(--accent); letter-spacing: .08em; }
+.step h3 { margin: 10px 0 8px; font-size: 1.15rem; text-transform: none; letter-spacing: -0.02em; color: var(--text); font-weight: 650; }
+.step p { color: var(--muted); font-size: 14.5px; }
 
 /* ---------- Trayectoria ---------- */
-.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 64px; }
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 56px; }
 .timeline { display: grid; gap: 28px; border-left: 1px solid var(--line); margin-left: 4px; }
 .timeline li { position: relative; padding-left: 26px; display: grid; gap: 2px; }
 .timeline li::before {
